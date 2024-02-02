@@ -1,0 +1,54 @@
+
+<div class="shadeColorB" style="flex: 1 1 auto; position: relative; display: flex; height: 100%; ">
+  <div class="shadeColor" style="flex: 0 1 auto; position: relative; width: 320px;">
+      <div class="titleSmall"> Items </div>
+      <div class="baseAbsolute" style="display:flex; top:30px; flex-direction:column;">
+
+        <ng-container *ngFor="let x of SampleItemList">
+
+          <div [ngClass]='setCSS() ' ><app-example-item [SampleItem]="x" (_selectEvent)="setCurrentItem($event)" ></app-example-item></div>
+        </ng-container>
+
+
+      </div>
+
+  </div>
+  <div style="flex: 1 1 auto; ">
+      <div style="position:relative; display: flex; flex-direction:column; ">
+          <div class="titleSmall" style="flex: 0 1 auto;">Item Info</div>
+
+          <div style="flex: 0 1 auto; padding: 10px;"></div>
+          <div style="flex: 1 1 auto; position: relative; display: flex; padding: 10px;">
+              <div style="flex: 1 1 auto; display: flex; ">
+                  <div style="flex: 0 1 auto;">
+                      <div class="inputTitle shadeColor">Title</div>
+                      <div class="inputTitle shadeColorB">Description</div>
+                      <div class="inputTitle shadeColor">Cost</div>
+                      <div class="inputTitle shadeColorB">Qty</div>
+                      <div class="inputTitle shadeColorB">Sold</div>
+                  </div>
+                  <div style="flex: 0 1 auto; width: 400px;">
+                      <div class="itemValue shadeColor">{{_currentItem.title}}</div>
+                      <div class="itemValue shadeColorB"><input style="width:95%;" type="text" [(ngModel)]="_currentItem.description" /></div>
+                      <div class="itemValue shadeColor"><input style="width:50px;" [ngModel]="_currentItem.cost | number : '1.2-2'" (ngModelChange)="_currentItem.cost = $event" /></div>
+                      <div class="itemValue shadeColorB"><input style="width:50px;" type="number" [(ngModel)]="_currentItem.qty" (ngModelChange)="setChg()"/></div>
+                      <div class="itemValue shadeColor">{{_currentItem.sold}}</div>
+
+
+                  </div>
+                  <div style="flex: 1 1 auto; display:flex;">
+                      <div style=" flex: 1 1 auto;"></div>
+                      <div style=" flex: 0 1 auto; width: 400px; background-color:#edededed;">
+                        <app-pie-chart #piecht [SampleItem]="_currentItem" ></app-pie-chart>
+                      </div>
+                      <div style=" flex: 1 1 auto;"    ></div>
+                  </div>
+                  </div>
+
+          </div>
+
+
+      </div>
+
+  </div>
+</div>
