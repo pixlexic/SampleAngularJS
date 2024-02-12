@@ -25,7 +25,7 @@ export class AppComponent {
 
     GlobalService.viewParent = this.parent;
 
-    setTimeout(() => this.navigation.setview('HOME'), 600);
+    setTimeout(() => this.navigation.setview('HOME'), 100);
 
   }
 
